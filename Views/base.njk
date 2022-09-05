@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>{{ title }}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&amp;family=Roboto:ital@1&amp;display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-primary fixed-top nav1 navbar-dark" id="Dnave">
+      <div class="container-fluid">
+        <a class="navbar-brand" href='/'><img src="projectImages/logo-White.svg" alt="logo" class="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
+          <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href='/#'>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href='/#menu'>MENU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#menu">GALLERY</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#Testimonials">Teastimonials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#contact">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/detail" id="sp">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#" id="sp">profile</a>
+            </li>
+            <li class="nav-item" id="cartB">
+              <a class="nav-link"   id="sp">Cart <span id="Cart_number">{{ cartN }}</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {# index content here #}
+    {% block index %}{% endblock %}
+    {# detail content here #}
+    {% block detail %}{% endblock %}
+
+    <div class="bg-modal">
+      <div class="modal-contents">
+        <div class="close">
+        +
+      </div>
+        <h3>Cart Content</h3>
+        <hr>
+        <div class="cart-row">
+          {# <span class="cart-item cart-header cart-column"></span> #}
+        </div>
+        <div class="cart-items">
+          {% for item in cartItems %}
+          <span>{{item.title}}</span>
+          <span>{{item.price}}</span>
+          <br>
+          {% endfor %}
+        </div>
+        <div class="cart-total">
+          <strong class="cart-total-title">Total</strong>
+          <span class="cart-total-price">{{TPrice}}</span>
+        </div>
+        <hr>
+        <span>
+          <button type="button" class="closeB" id="Cart-botton">close</button>
+        </span>
+        <span>
+          <form method="post" action='/sales/cart' >
+            <button name="Order" value="{{cartItems}}" type="supmit" id="Cart-botton" onclick="">order now</button>
+          </form>
+        </span>
+      </div>
+    </div>
+    {# footer #}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-6">
+          <div class="flex-container01">
+            <div class="contents">
+              <ul id="Contact" class="list">
+                <li class="down white font02 font-size">phone:<span class="font200">+966-13-860-0000</span></li>
+                <li class="down">
+                  <img src="projectImages/clock.svg" alt="clock" class="time" height="100">
+                  <div class="white font02 font-size locText">
+                  sun-thr 11:00 - 23:00<br>
+                  </div>
+                  <div class="white font02 font-size locText">
+                  fri-sat 12:00-23:00
+                </div>
+                </li>
+                <li class="down white">
+                  <img src="projectImages/placeholder.svg" alt="placeholder" class="loc" height="100">
+                  <div class="font02 font-size locText">
+                  123 KFUPM Students Mall<br>
+                  Dhahran 34464
+                </div>
+                </li>
+                <li class="down">
+                  <span class="socialMediaMargin">
+                    <a href="" class="white font02 font-size removeLine">facebook</a>
+                  </span>
+                  <span class="socialMediaMargin">
+                    <a href="" class="white font02 font-size removeLine">Twitter</a>
+                  </span>
+                  <span class="socialMediaMargin">
+                    <a href="" class="white font02 font-size removeLine">Instagram</a></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-12 col-lg-6"><img width="100%" src="projectImages/map.png" alt="map"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-4">
+          <img width="40%" src="projectImages/logo-red.svg" alt="logo">
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br>
+        Quaerat magni a neque est impedit obcaecati laudantium praesentium. Facilis eligendi quod iure,<br>
+        repellat nisi, ullam porro accusantium ipsam, autem quidem odit.</p>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4 me-auto">
+          <div>
+            <ul>
+              <li class="usefulLinks- red font02">
+                <h2 id="contact">USFUL LINKS</h2>
+              </li>
+              <li class="usefulLinks-">
+                <a href="" class="black font02 font-size removeLine">About</a>
+              </li>
+              <li class="usefulLinks-">
+                <a href="#Menu" class="black font02 font-size removeLine">Menu</a>
+              </li>
+              <li class="usefulLinks-">
+                <a href="#Testimonials" class="black font02 font-size removeLine">Tastimonials</a>
+              </li>
+              <li class="usefulLinks-">
+                <a href="#Contact" class="black font02 font-size removeLine">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4 me-auto">
+          <div class="links">
+            <ul>
+              <li class="down red font02">
+                <h2>INTEGRAM FEEDS</h2>
+              </li>
+              <li class="down">
+                <a href=""><img src="projectImages/meal1.png" alt="meal1" height="75"></a>
+                <a href=""><img src="projectImages/meal2.png" alt="meal2" height="75"></a>
+                <a href=""><img src="projectImages/meal3.png" alt="meal3" height="75"></a>
+              </li>
+              <li class="down margin025">
+                <a href=""><img src="projectImages/meal4.png" alt="meal4" height="75"></a>
+                <a href=""><img src="projectImages/meal5.png" alt="meal5" height="75"></a>
+                <a href=""><img src="projectImages/meal6.png" alt="meal6" height="75"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  </body>
+</html>
